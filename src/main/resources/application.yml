@@ -1,0 +1,31 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: loan-system
+
+  datasource:
+    url: jdbc:sqlserver://localhost:1433;databaseName=loan_system;encrypt=true;trustServerCertificate=true
+    username: ${DB_USERNAME:sql_admin}
+    password: ${DB_PASSWORD:Ramya@744}
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    open-in-view: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServerDialect
+        format_sql: true
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:this-is-a-dev-only-secret-key-please-change-it-before-prod-32chars}
+    expiration-ms: ${JWT_EXPIRATION_MS:86400000}
+
+logging:
+  level:
+    com.equipment.loan: INFO
